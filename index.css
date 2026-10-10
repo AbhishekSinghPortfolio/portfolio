@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@200;300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #050505;
+    color: #e8e8e8;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: rgba(212, 175, 55, 0.3);
+    color: #f2d98a;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(212, 175, 55, 0.2);
+    border-radius: 2px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(212, 175, 55, 0.5);
+  }
+}
+
+@layer components {
+  .gold-text {
+    background: linear-gradient(135deg, #f2d98a 0%, #d4af37 40%, #b8911a 70%, #f2d98a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gold-text-shimmer {
+    background: linear-gradient(90deg, #b8911a 0%, #f2d98a 30%, #e8c04a 50%, #f2d98a 70%, #b8911a 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 5s linear infinite;
+  }
+
+  /* Glassmorphism */
+  .glass {
+    background: rgba(12, 12, 18, 0.45);
+    backdrop-filter: blur(16px) saturate(1.2);
+    -webkit-backdrop-filter: blur(16px) saturate(1.2);
+    border: 1px solid rgba(212, 175, 55, 0.12);
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .glass-hover:hover {
+    border-color: rgba(212, 175, 55, 0.35);
+    box-shadow: 0 8px 40px rgba(212, 175, 55, 0.06),
+                0 0 0 1px rgba(212, 175, 55, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  }
+
+  .glass-strong {
+    background: rgba(10, 10, 15, 0.7);
+    backdrop-filter: blur(24px) saturate(1.4);
+    -webkit-backdrop-filter: blur(24px) saturate(1.4);
+    border: 1px solid rgba(212, 175, 55, 0.18);
+  }
+
+  /* 3D card container */
+  .card-3d {
+    transform-style: preserve-3d;
+    transition: transform 0.15s ease-out;
+    will-change: transform;
+  }
+
+  .card-3d-inner > * {
+    transform: translateZ(0);
+  }
+
+  .card-3d-content {
+    transform: translateZ(30px);
+  }
+
+  .card-3d-badge {
+    transform: translateZ(50px);
+  }
+
+  /* Gold button */
+  .gold-btn {
+    background: linear-gradient(135deg, #d4af37 0%, #b8911a 50%, #9a7614 100%);
+    color: #050505;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    transition: all 0.35s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .gold-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+  }
+
+  .gold-btn:hover::before {
+    left: 100%;
+  }
+
+  .gold-btn:hover {
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+    transform: translateY(-1px);
+  }
+
+  /* Section divider */
+  .section-divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+    margin: 0 auto;
+  }
+
+  /* Inputs */
+  .input-field {
+    background: rgba(8, 8, 12, 0.6);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    color: #e8e8e8;
+    transition: all 0.3s ease;
+  }
+
+  .input-field::placeholder {
+    color: rgba(232, 232, 232, 0.25);
+  }
+
+  .input-field:focus {
+    outline: none;
+    border-color: rgba(212, 175, 55, 0.5);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.06);
+  }
+
+  .nav-link {
+    color: rgba(232, 232, 232, 0.45);
+    transition: color 0.3s ease;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .nav-link:hover {
+    color: #d4af37;
+  }
+
+  .nav-link.active {
+    color: #d4af37;
+  }
+
+  /* Glow ring for side nav dots */
+  .nav-dot {
+    transition: all 0.35s ease;
+  }
+
+  .nav-dot.active {
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+  }
+}
+
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .perspective-2000 {
+    perspective: 2000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  .text-shadow-gold {
+    text-shadow: 0 0 30px rgba(212, 175, 55, 0.15);
+  }
+
+  .font-mono-display {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .animate-delay-100 { animation-delay: 100ms; }
+  .animate-delay-200 { animation-delay: 200ms; }
+  .animate-delay-300 { animation-delay: 300ms; }
+  .animate-delay-400 { animation-delay: 400ms; }
+  .animate-delay-500 { animation-delay: 500ms; }
+  .animate-delay-600 { animation-delay: 600ms; }
+  .animate-delay-700 { animation-delay: 700ms; }
+  .animate-delay-800 { animation-delay: 800ms; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+  50% { box-shadow: 0 0 0 16px rgba(212, 175, 55, 0); }
+}
+
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  0% { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInRight {
+  0% { opacity: 0; transform: translateX(40px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+/* Bolt Badge and Link Removal */
+[class*="bolt-"],
+[id*="bolt-"],
+a[href*="bolt.new"],
+a[href*="bolt.host"],
+div[class*="badge"],
+.bolt-watermark {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
